@@ -1,0 +1,30 @@
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>author</th>
+      <th>Book ispn</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+{{ books }}
+  {{#each books}}
+{{ name }}
+    {{view App.ShowBookView bookBinding="this"}}
+  {{/each}}
+  {{#if isNewVisible}}
+    <tr>
+      <td>*</td>
+      <td colspan="4">
+        {{view App.BookNewView}}
+      </td>
+    </tr>
+  {{/if}}
+  </tbody>
+</table>
+
+<br/>
+<div class="commands">
+  <a href="#" {{action "showNew"}}>New </a>
+</div>

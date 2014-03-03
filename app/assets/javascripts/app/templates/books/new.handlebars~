@@ -1,0 +1,15 @@
+<p>New Form</p>
+
+
+{{#with book}}
+  {{view Ember.TextField valueBinding="name" placeholder="name"}}
+  {{view Ember.TextField valueBinding="author"  placeholder="author"}}
+  {{view Ember.TextField valueBinding="price"  placeholder="Price"}}
+  {{view Ember.TextField valueBinding="book_ispn"  placeholder="Ispn no"}} 
+{{/with}}
+
+
+<div {{action "bookSubmit"}} class="mybutton" id="nextBtn">{{#if lastStepValue }} Submit {{else}}Next{{/if}}</div>
+<div {{action "cancelForm"}} class="mybutton">Cancel</div>
+</div>
+

@@ -1,0 +1,11 @@
+<h1>Listing books</h1>
+
+<script type="text/x-handlebars">
+  {{ view App.ListBooksView }}
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    App.booksController.loadValuesUpto(<%= @books.to_json.html_safe %>,<%= @books.total_entries %>);
+  });
+</script>

@@ -1,0 +1,45 @@
+edit 
+
+---------------------
+
+{{#with book}}
+
+
+  <td>{{view Ember.TextField valueBinding="name" placeholder="name" class='span3'}}</td>
+  <td>{{view Ember.TextField valueBinding="author"  placeholder="author" class='span3'}}</td>
+  <td>{{view Ember.TextField valueBinding="price"  placeholder="Price" class='span2'}}</td>
+  <td>{{view Ember.TextField valueBinding="book_ispn"  placeholder="Ispn no" class='span2'}} </td>
+
+ <td>
+    <a href = '#' class='btn btn-mini'> {{#if id}}Update{{else}}Create{{/if}} </a>
+  
+  <a href="#" {{action "cancelForm"}} class='btn btn-mini'>Cancel</a></td>
+
+
+{{/with}}
+
+-----------------------------
+show
+-------------------
+<tr><td>{{book.id}}</td>
+
+  {{#if isEditing}}
+    {{view App.EditBookView}}
+  {{else}}  
+   <td class="data">   {{book.name}}</td>
+   <td class="data">  {{book.author}}</td>
+   <td>{{book.book_ispn}}</td>
+   <td>{{book.price}}</td>
+   
+  {{/if}}
+
+<td class="data">
+  <div class="commands">
+    {{#unless isEditing}}
+      <a href="#" {{action "showEdit"}}>Edit</a>
+      <a href="#" {{action "destroyRecord"}}>Remove</a>
+    {{/unless}}
+  </div>
+</td>
+</tr>
+----------------------------

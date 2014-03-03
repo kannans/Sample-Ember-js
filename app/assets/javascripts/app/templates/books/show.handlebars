@@ -1,0 +1,20 @@
+<td>{{book.id}}</td>
+
+  {{#if isEditing}}
+  <td class="data" colspan="4">  {{view App.EditBookView}}</td>
+  {{else}}  
+   <td class="data">   {{book.name}}</td>
+   <td class="data">  {{book.author}}</td>
+   <td>{{book.book_ispn}}</td>
+   <td>{{book.price}}</td>
+   
+  {{/if}}
+
+<td class="data">
+  <div class="commands">
+    {{#unless isEditing}}
+      <a href="#" {{action "showEdit"}}>Edit</a>
+      <a href="#" {{action "destroyRecord"}}>Remove</a>
+    {{/unless}}
+  </div>
+</td>

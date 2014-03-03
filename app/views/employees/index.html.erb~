@@ -1,0 +1,20 @@
+<h1>Listing employees</h1>
+
+<script type="text/x-handlebars">
+  {{ view App.ListEmployeesView }}
+</script>
+
+<script type="text/javascript">
+  $(function() {
+    App.employeesController.loadValuesUpto(<%= @employees.to_json.html_safe %>,<%= @employees.total_entries %>);
+  });
+</script>
+
+
+
+
+
+
+
+
+
