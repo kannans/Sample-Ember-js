@@ -22,13 +22,21 @@ def create
 
 if params[:key1][:book].present?
 data_url = params[:key1][:book][:image]
-data_url_split = data_url.split(',')[0].length
-extension = Book.splitBase64(data_url)[:extension]
+if data_url.present?
+data_url_split = data_url.split(',')[0].length if data_url
+extension = Book.splitBase64(data_url)[:extension] if data_url
 img = Base64.decode64(data_url[data_url_split .. -1]) if data_url
 #File.open('app/assets/' + params[:key1][:book][:name], 'wb') { |f| f.write(jpeg) }
 File.open('public/images/'+ params[:key1][:book][:name] + '.' + extension, 'wb') { |f| f.write(img) }
-@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}." + "#{extension}" )
 
+@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}." + "#{extension}" )
+else
+session[:book_params] ||= {}
+      
+      session[:book_params].deep_merge!(params[:key1][:book]) if params[:key1][:book]
+@book = Book.new(session[:employee_params])
+    
+end
 else
 session[:book_params] ||= {}
       

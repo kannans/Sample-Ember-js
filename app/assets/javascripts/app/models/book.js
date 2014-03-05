@@ -7,12 +7,12 @@ App.Book  = Ember.Resource.extend({
 
 validate: function() {
 
-
-    if (this.get('name') === undefined || this.get('name') === '' ||
+   if (this.get('name') === undefined || this.get('name') === '' ||
         this.get('author') === undefined  || this.get('author') === '' ||
         this.get('book_ispn') === undefined  || this.get('book_ispn') === '' ||
         this.get('price') === undefined  || this.get('price') === '') {
       alert("Book require a first, last name and city , age.")
+    return "Book require a first, last name and city , age."
       
     }
   },
@@ -20,6 +20,7 @@ validate: function() {
     var self = this;
     var book_image = $('#book_image').attr('src');
     self.set('image',book_image);
+    //alert(this.validate);
     if (this.validate !== undefined) {
       var error = this.validate();
       if (error) {
@@ -35,6 +36,7 @@ validate: function() {
                                   data: {"key1": this.serialize(), "back_button": btnVal}})
       .done(function(json) {
         // Update properties
+        //alert("updates");
         if (json) self.deserialize(json);
       });
   },

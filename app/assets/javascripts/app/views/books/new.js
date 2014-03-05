@@ -37,42 +37,28 @@ App.NewBookView = Ember.View.extend({
     this.submit("prev");
   },
 
-  submit: function(event) {
+  book_submit: function() {
+    //alert(event);
 //alert("submit")
-    var actionValue = event
+    var actionValue = "next"
     var self = this;
     var book = this.get("book");
    
-   book.set("isSaveEmp",true);
-    book.saveBook(book.get("isSaveEmp"),actionValue)
+   book.set("isSavebook",true);
+    book.saveBook(book.get("isSavebook"),actionValue)
       .fail( function(e) {
+        //alert("fail");
 //alert("fail")
         App.displayError(e);
       })
       .done(function() {
 //alert("done");
-         if(self.get("firstStepValue") === true){
-           self.set("emp",employee);
-           self.secondStep();
-           self.set("isSaveEmp",false);
-         }
-         else if (self.get("secondStepValue") === true){
-            if(actionValue === "next"){
-             self.set("emp", self.get("emp")+ employee);
-             self.lastStep();
-             self.set("isSaveEmp",false);
-            }else{
-              self.firstStep();
-            }
-         }
-         else {
-         book.set("emp", book.get("emp")+ book);
+              
+         
            App.booksController.set("totalValues",App.booksController.get("totalValues")+1);
            self.get("parentView").hideNew();
-           self.set("isSaveEmp",true);
-       
            App.booksController.pushObject(book);
-         }       
+              
       });
 
 
