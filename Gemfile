@@ -9,6 +9,7 @@ gem 'mysql2'
 gem 'jquery-rails','~> 1.0.19'
 gem 'ember-source', '1.0.0.rc2'
 gem 'ember-rails', '>= 0.4.0'
+gem "uglifier", "~> 2.4.0"
 
 # Gems used only for assets and not required
 # in production environments by default.
