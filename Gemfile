@@ -17,7 +17,7 @@ gem "uglifier", "~> 2.4.0"
 #group :production do
     gem 'pg'
 #end
-
+gem 'heroku-rake'
 gem 'therubyracer'
 gem 'execjs'
 gem 'will_paginate', '~> 3.0'
