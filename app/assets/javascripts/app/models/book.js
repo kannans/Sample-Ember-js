@@ -10,9 +10,10 @@ validate: function() {
    if (this.get('name') === undefined || this.get('name') === '' ||
         this.get('author') === undefined  || this.get('author') === '' ||
         this.get('book_ispn') === undefined  || this.get('book_ispn') === '' ||
+        this.get('image') === undefined  || this.get('image') === '' ||
         this.get('price') === undefined  || this.get('price') === '') {
-      alert("Book require a first, last name and city , age.")
-    return "Book require a first, last name and city , age."
+      alert("Book require a name, author,ispn no and price , image.")
+      return "Book require a name, author,ispn no and price , image.."
       
     }
   },
