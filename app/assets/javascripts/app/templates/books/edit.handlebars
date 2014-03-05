@@ -3,7 +3,7 @@
   {{view Ember.TextField valueBinding="author"  placeholder="author"}}
   {{view Ember.TextField valueBinding="price"  placeholder="Price"}}
   {{view Ember.TextField valueBinding="book_ispn"  placeholder="Ispn no"}}
-  <img height="50" width="50" {{bindAttr src="image"}} />
+  <img height="50" width="50" {{bindAttr src="image_url"}} />
 {{#view Ember.View contentBinding="App.Book"}}
     {{#view App.PreviewUploadImage name="logo_image" contentBinding="content"}}
     {{view fileField}}
