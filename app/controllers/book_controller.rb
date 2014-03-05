@@ -16,21 +16,14 @@ respond_to do |format|
          format.json { render json: {"new" => "ok"} }
       end
 
-
-
-
 end
-
-
-
 def create
-p "+++++++params create+++++="
-p params 
-p "++++++++"
-session[:book_params] ||= {}
-session[:book_params].deep_merge!(params[:key1][:book]) if params[:key1][:book]
 
-@book = Book.new( session[:book_params])
+data_url = params[:key1][:book][:image]
+jpeg = Base64.decode64(data_url['data:image/jpeg;base64,'.length .. -1])
+#File.open('app/assets/' + params[:key1][:book][:name], 'wb') { |f| f.write(jpeg) }
+File.open('app/assets/'+ params[:key1][:book][:name] +'.jpeg', 'wb') { |f| f.write(jpeg) }
+@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}.jpeg")
 
 respond_to do |format|
 
@@ -42,21 +35,14 @@ if @book.valid?
          format.json { render json: @book.errors, status: :unprocessable_entity }
         end 
 
-     
-      end
-
-
+    end
 end
 def edit
 
 end
 
 def update
-
-p "+++++++params updaye+++++="
-p params 
-p "++++++++"
-    @book = Book.find(params[:id])
+   @book = Book.find(params[:id])
 
     respond_to do |format|
       if @book.update_attributes(params[:book])      
@@ -65,7 +51,6 @@ p "++++++++"
         format.json { render json: @book.errors, status: :unprocessable_entity }
       end
     end
-
 end
 
 

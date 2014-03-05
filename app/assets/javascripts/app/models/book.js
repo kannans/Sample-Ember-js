@@ -9,9 +9,10 @@ App.Book  = Ember.Resource.extend({
 //		alert(isMyNew);
     var self = this;
 
-    self.set('image','ddd')
-var book_image = $('#book_image').val();
-alert(book_image);
+    
+var book_image = $('#book_image').attr('src');
+self.set('image',book_image);
+
     return this._resourceRequest({type: isMyNew ? 'POST' : 'PUT',
                                   data: {"key1": this.serialize(), "back_button": btnVal}})
       .done(function(json) {
