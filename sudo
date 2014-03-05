@@ -1,0 +1,2 @@
+SSHD: ALL /etc/hosts.allow
+SSHD: ALL /etc/hosts.allow
