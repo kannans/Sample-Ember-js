@@ -7,8 +7,8 @@
    <td class="data">  {{book.author}}</td>
    <td>{{book.book_ispn}}</td>
    <td>{{book.price}}</td>
-   <td>{{book.image}}</td>
-   
+   <td><img height="50" width="50" {{bindAttr src="book.image_url"}} /></td>
+
   {{/if}}
 
 <td class="data">

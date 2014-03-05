@@ -20,6 +20,9 @@ self.set('image',book_image);
         if (json) self.deserialize(json);
       });
   },
-
+image_url: Ember.computed(function() {
+  this.set('path','/assets/');
+    return this.get('path') + this.get('image');
+  }).property('path', 'image')
 });
 

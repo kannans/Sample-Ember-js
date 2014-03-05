@@ -24,7 +24,9 @@ App.EditBookView = Ember.View.extend({
   submit: function(event) {
     var self = this;
     var book = this.get("book");
-
+    var book_image = $('#book_image').attr('src');
+    //alert(book_image);
+    book.set('image',book_image);
     event.preventDefault();
 
     book.saveResource()
