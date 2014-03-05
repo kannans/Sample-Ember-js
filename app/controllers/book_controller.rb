@@ -21,12 +21,13 @@ def create
 
 
 if params[:key1][:book].present?
-
 data_url = params[:key1][:book][:image]
-jpeg = Base64.decode64(data_url['data:image/jpeg;base64,'.length .. -1]) if data_url
+data_url_split = data_url.split(',')[0].length
+extension = Book.splitBase64(data_url)[:extension]
+img = Base64.decode64(data_url[data_url_split .. -1]) if data_url
 #File.open('app/assets/' + params[:key1][:book][:name], 'wb') { |f| f.write(jpeg) }
-File.open('public/images/'+ params[:key1][:book][:name] +'.jpeg', 'wb') { |f| f.write(jpeg) }
-@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}.jpeg")
+File.open('public/images/'+ params[:key1][:book][:name] + '.' + extension, 'wb') { |f| f.write(img) }
+@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}." + "#{extension}" )
 
 else
 session[:book_params] ||= {}
@@ -56,13 +57,16 @@ def update
 
 
 data_url = params[:book][:image]
-jpeg = Base64.decode64(data_url['data:image/jpeg;base64,'.length .. -1])
+data_url_split = data_url.split(',')[0].length
+extension = Book.splitBase64(data_url)[:extension]
+img = Base64.decode64(data_url[data_url_split .. -1]) if data_url
 #File.open('app/assets/' + params[:key1][:book][:name], 'wb') { |f| f.write(jpeg) }
-File.open('app/assets/images/'+ params[:book][:name] +'.jpeg', 'wb') { |f| f.write(jpeg) }
+File.open('public/images/'+ params[:book][:name] + '.' + extension, 'wb') { |f| f.write(img) }
+
    @book = Book.find(params[:id])
 
     respond_to do |format|
-      if @book.update_attributes(:name=> params[:book][:name],:author=>params[:book][:author],:book_ispn=>params[:book][:book_ispn],:price=>params[:book][:price],:image=>"#{params[:book][:name]}.jpeg")
+      if @book.update_attributes(:name=> params[:book][:name],:author=>params[:book][:author],:book_ispn=>params[:book][:book_ispn],:price=>params[:book][:price],:image=>"#{params[:book][:name]}." + "#{extension}")
         format.json  { render json: nil, status: :ok }
       else      
         format.json { render json: @book.errors, status: :unprocessable_entity }

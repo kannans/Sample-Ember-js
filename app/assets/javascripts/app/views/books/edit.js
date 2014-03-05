@@ -17,6 +17,10 @@ App.EditBookView = Ember.View.extend({
     this.$('input:first').focus();
   },
 
+ refreshListing: function() {
+        App.employeesController.findAll();
+    },
+
   cancelForm: function() {
     this.get("parentView").hideEdit();
   },
@@ -37,6 +41,7 @@ App.EditBookView = Ember.View.extend({
         var parentView = self.get("parentView");
         parentView.get("book").duplicateProperties(book);
         parentView.hideEdit();
+        book.refreshListing();
       });
   }
 });
