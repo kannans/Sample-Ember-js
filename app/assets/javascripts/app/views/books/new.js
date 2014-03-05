@@ -17,7 +17,7 @@ App.NewBookView = Ember.View.extend({
   },
 
   cancelForm: function() {
-    alert("yes");
+    //alert("yes");
     $.ajax({
     url: "/employees/new",
     dataType: 'json'
