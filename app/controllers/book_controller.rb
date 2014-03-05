@@ -23,9 +23,9 @@ def create
 if params[:key1][:book].present?
 
 data_url = params[:key1][:book][:image]
-jpeg = Base64.decode64(data_url['data:image/jpeg;base64,'.length .. -1]) 
+jpeg = Base64.decode64(data_url['data:image/jpeg;base64,'.length .. -1]) if data_url
 #File.open('app/assets/' + params[:key1][:book][:name], 'wb') { |f| f.write(jpeg) }
-File.open('app/assets/images/'+ params[:key1][:book][:name] +'.jpeg', 'wb') { |f| f.write(jpeg) }
+File.open('public/images/'+ params[:key1][:book][:name] +'.jpeg', 'wb') { |f| f.write(jpeg) }
 @book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}.jpeg")
 
 else

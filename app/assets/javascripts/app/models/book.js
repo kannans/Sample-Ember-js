@@ -44,7 +44,7 @@ validate: function() {
 
 
 image_url: Ember.computed(function() {
-  this.set('path','/assets/');
+  this.set('path','/images/');
     return this.get('path') + this.get('image');
   }).property('path', 'image')
 });
