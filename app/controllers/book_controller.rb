@@ -23,7 +23,7 @@ data_url = params[:key1][:book][:image]
 jpeg = Base64.decode64(data_url['data:image/jpeg;base64,'.length .. -1])
 #File.open('app/assets/' + params[:key1][:book][:name], 'wb') { |f| f.write(jpeg) }
 File.open('app/assets/images/'+ params[:key1][:book][:name] +'.jpeg', 'wb') { |f| f.write(jpeg) }
-@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>"#{params[:key1][:book][:name]}.jpeg")
+@book = Book.new(:name=> params[:key1][:book][:name],:author=>params[:key1][:book][:author],:book_ispn=>params[:key1][:book][:book_ispn],:price=>params[:key1][:book][:price],:image=>params[:key1][:book][:image])
 
 respond_to do |format|
 
@@ -51,7 +51,7 @@ File.open('app/assets/images/'+ params[:book][:name] +'.jpeg', 'wb') { |f| f.wri
    @book = Book.find(params[:id])
 
     respond_to do |format|
-      if @book.update_attributes(:name=> params[:book][:name],:author=>params[:book][:author],:book_ispn=>params[:book][:book_ispn],:price=>params[:book][:price],:image=>"#{params[:book][:name]}.jpeg")
+      if @book.update_attributes(:name=> params[:book][:name],:author=>params[:book][:author],:book_ispn=>params[:book][:book_ispn],:price=>params[:book][:price],:image=>params[:book][:image])
         format.json  { render json: nil, status: :ok }
       else      
         format.json { render json: @book.errors, status: :unprocessable_entity }
