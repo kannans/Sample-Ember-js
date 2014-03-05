@@ -5,7 +5,7 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+#gem 'mysql2'
 gem 'jquery-rails','~> 1.0.19'
 gem 'ember-source', '1.0.0.rc2'
 gem 'ember-rails', '>= 0.4.0'
@@ -14,9 +14,9 @@ gem "uglifier", "~> 2.4.0"
 # Gems used only for assets and not required
 # in production environments by default.
 
-group :production do
+#group :production do
     gem 'pg'
-end
+#end
 
 gem 'therubyracer'
 gem 'execjs'
