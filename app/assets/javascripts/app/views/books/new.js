@@ -17,21 +17,25 @@ App.NewBookView = Ember.View.extend({
   },
 
   cancelForm: function() {
+    alert("yes");
     $.ajax({
     url: "/employees/new",
     dataType: 'json'
     } );
 
-    this.firstStep();
+   
     this.get("parentView").hideNew();
   },
 
-  
+ 
   nextSubmit: function(){
 //alert("sss")
     this.submit("next");
   },
-  
+  prevSubmit: function(){
+    
+    this.submit("prev");
+  },
 
   submit: function(event) {
 //alert("submit")
