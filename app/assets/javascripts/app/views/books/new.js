@@ -26,39 +26,12 @@ App.NewBookView = Ember.View.extend({
     this.get("parentView").hideNew();
   },
 
-  firstStep: function(){
-    this.set('firstStepValue',true);
-    this.set('secondStepValue',false);
-    this.set('lastStepValue',false);
-  },
-  secondStep: function(){
-    this.set('firstStepValue',false);
-    this.set('secondStepValue',true);
-    this.set('lastStepValue',false);
-  },
- 
-  lastStep: function(){
-    this.set('firstStepValue',false);
-    this.set('secondStepValue',false);
-    this.set('lastStepValue',true);
-  },
+  
   nextSubmit: function(){
 //alert("sss")
     this.submit("next");
   },
-  prevSubmit: function(){
-    
-    this.submit("prev");
-  },
- bookSubmit: function(event){
-    
-    alert("book submit")
-    var book = this.get("book");
-alert(book);
-  App.booksController.set("totalValues",App.booksController.get("totalValues")+1);
-           
-    App.booksController.pushObject(book);
-  },
+  
 
   submit: function(event) {
 //alert("submit")
