@@ -17,9 +17,7 @@ App.EditBookView = Ember.View.extend({
     this.$('input:first').focus();
   },
 
- refreshListing: function() {
-        App.employeesController.findAll();
-    },
+
 
   cancelForm: function() {
     this.get("parentView").hideEdit();

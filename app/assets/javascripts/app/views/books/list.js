@@ -4,7 +4,6 @@ App.ListBooksView = Ember.View.extend({
     booksBinding: 'App.booksController',
 
  showNew: function() {
-//alert("dddd");
          $.ajax({
             url: "/book/new",
             dataType: 'json'
@@ -19,7 +18,7 @@ App.ListBooksView = Ember.View.extend({
     },
 
     refreshListing: function() {
-        App.employeesController.findAll();
+        App.booksController.findAll();
     }
          
 });
